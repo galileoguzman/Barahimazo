@@ -3,15 +3,18 @@ package com.galileoguzman.barahimazo;
 /**
  * Created by galileoguzman on 26/02/15.
  */
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -37,6 +40,7 @@ public class ListViewAdapter extends BaseAdapter {
         TextView description;
         TextView latitude;
         TextView longitude;
+        ImageView picBar;
 
     }
 
@@ -60,36 +64,45 @@ public class ListViewAdapter extends BaseAdapter {
         if (view == null) {
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.listview_item, null);
-// Locate the TextViews in listview_item.xml
+
+            // Locate the TextViews in listview_item.xml
             holder.name = (TextView) view.findViewById(R.id.name);
             holder.description = (TextView) view.findViewById(R.id.description);
             holder.latitude = (TextView) view.findViewById(R.id.latitude);
             holder.longitude = (TextView) view.findViewById(R.id.longitude);
+            holder.picBar = (ImageView) view.findViewById(R.id.imgBar);
+
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
-// Set the results into TextViews
+        // Set the results into TextViews
         holder.name.setText(barList.get(position).getName());
         holder.description.setText(barList.get(position).getDescription());
         holder.latitude.setText(barList.get(position).getLatitude());
         holder.longitude.setText(barList.get(position).getLongitude());
+        holder.picBar.setImageDrawable(
+                Drawable.createFromStream(
+                    new ByteArrayInputStream(barList.get(position).getImage()),
+                    barList.get(position).getName()
+                ));
 
-// Listen for ListView Item Click
+        // Listen for ListView Item Click
         view.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-// Send single item click data to SingleItemView Class
+                // Send single item click data to SingleItemView Class
                 Intent intent = new Intent(mContext, SingleItemView.class);
-// Pass all data rank
+                // Pass all data rank
                 intent.putExtra("name",(barList.get(position).getName()));
-// Pass all data country
+                // Pass all data country
                 intent.putExtra("description", (barList.get(position).getDescription()));
-// Pass all data population
-                intent.putExtra("latitude", (barList.get(position).getLatitude()));
-                intent.putExtra("longitude", (barList.get(position).getLongitude()));
-// Start SingleItemView Class
+                // Pass all data population
+                //intent.putExtra("latitude", (barList.get(position).getLatitude()));
+                //intent.putExtra("longitude", (barList.get(position).getLongitude()));
+                // Start SingleItemView Class
+                intent.putExtra("image",(barList.get(position).getImage()));
                 mContext.startActivity(intent);
             }
         });

@@ -1,63 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/blue"
+    android:padding="10dp">
 
-    <!-- Etiqueta para el nombre -->
-    <TextView
-        android:id="@+id/namelabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="name" />
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:id="@+id/imageBar"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/antro" />
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
+    <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/namelabel" />
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center|bottom"
+        android:orientation="vertical"
+        android:background="#5a000000"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_alignBottom="@+id/imageBar">
 
-    <!-- Etiqueta para agregar la descripcion del Bar -->
-    <TextView
-        android:id="@+id/descriptionlabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/namelabel"
-        android:text="description" />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="304dp"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffffff" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
-        android:layout_toRightOf="@+id/descriptionlabel"/>
+        android:layout_below="@+id/imageBar" />
 
-    <!-- Etiqueta para la latitude -->
 
-    <TextView
-        android:id="@+id/latitudelabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/descriptionlabel"
-        android:text="@string/latitudelabel" />
-
+<!--
     <TextView
         android:id="@+id/latitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
-        android:layout_toRightOf="@+id/descriptionlabel" />
-
-    <!-- Etiqueta para la latitude -->
-
-    <TextView
-        android:id="@+id/longitudelabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/latitudelabel"
-        android:text="longitude" />
+        android:layout_below="@+id/descriptionlabel"
+        android:layout_toRightOf="@+id/latitudelabel" />
 
     <TextView
         android:id="@+id/longitude"
@@ -65,5 +54,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/latitude"
         android:layout_toRightOf="@+id/longitudelabel" />
-
-</LinearLayout>
+-->
+</RelativeLayout>

@@ -8,6 +8,8 @@ public class Bar {
     private String description;
     private String latitude;
     private String longitude;
+    private byte[] image;
+    private String imageUrl;
 
     public String getName() {
         return name;
@@ -39,5 +41,21 @@ public class Bar {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

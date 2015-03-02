@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -65,10 +66,15 @@ public class MainActivity extends ActionBarActivity {
 
                 for (ParseObject baresito : ob) {
                     Bar antro = new Bar();
+                    ParseFile picBar = baresito.getParseFile("imageBar");
+
                     antro.setName((String) baresito.get("name"));
                     antro.setDescription((String) baresito.get("description"));
                     antro.setLatitude((String) baresito.get("latitude"));
                     antro.setLongitude((String) baresito.get("longitude"));
+
+                    antro.setImage(picBar.getData());
+
                     BarList.add(antro);
                 }
             } catch (ParseException e) {
